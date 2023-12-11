@@ -1,0 +1,23 @@
+Since I created a simple Python application most SQL queries cannot be run without supplying arguments
+Here are the queries that I used:
+
+SELECT * FROM members;
+
+SELECT * FROM instructors;
+
+SELECT * FROM rooms;
+
+SELECT * FROM equipment;
+
+SELECT * FROM classes;
+
+SELECT * FROM members WHERE member_id in (select member_id from takes);
+
+INSERT INTO members(first_name, last_name, registration_date, height, weight) VALUES (%s, %s, %s, %s, %s)
+INSERT INTO instructors(first_name, last_name, salary) VALUES (%s, %s, %s)
+INSERT INTO classes(class_name, start_date, end_date) VALUES (%s, %s, %s)
+INSERT INTO located_in(class_id, room_id, class_date) VALUES (%s, %s, %s)
+INSERT INTO trains(member_id, instructor_id, sessions_remaining) VALUES (%s, %s, %s)
+INSERT INTO takes(class_id, member_id, registration_date) VALUES (%s, %s, %s)
+UPDATE equipment SET last_inspection_date = (%s) WHERE student_id = (%s)
+
